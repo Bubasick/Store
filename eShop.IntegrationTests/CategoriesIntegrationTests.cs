@@ -40,7 +40,7 @@ namespace eShop.IntegrationTests
         [Test]
         public async Task CategoriesController_GetById_ReturnsCategoryDto()
         {
-            var httpResponse = await _client.GetAsync(RequestUri + 1);
+            var httpResponse = await _client.GetAsync(RequestUri + 1 );
 
             httpResponse.EnsureSuccessStatusCode();
             var stringResponse = await httpResponse.Content.ReadAsStringAsync();
@@ -107,7 +107,7 @@ namespace eShop.IntegrationTests
             var categoriesAfterDelete = JsonConvert.DeserializeObject<IEnumerable<CategoryDto>>(stringAfterDeleteResponse);
            
             httpResponse.EnsureSuccessStatusCode();
-            categoriesAfterDelete.Count().Should().Be(categoriesBeforeDelete.Count() - 1);
+            categoriesAfterDelete.Count().Should().Be(categoriesBeforeDelete.Count() - 2 + 1);
             ;
         }
     }
